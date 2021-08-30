@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+  <head>
+  <title>
+    
+      Infinite Resolution Image processing with GAN and RL from unpaired image datasets. | Abhishek's Blog
+    
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Abhishek's Blog" />
+  <!-- Use RSS-2.0 -->
+  <!--<link href="/rss-feed.xml" type="application/rss+xml" rel="alternate" title="Abhishek's Blog | All things AI and Beyond!"/>
+  //-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+    MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+      });
+  </script>
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-112060364-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  <!-- Use Jekyll SEO plugin -->
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Infinite Resolution Image processing with GAN and RL from unpaired image datasets. | Abhishek’s Blog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Infinite Resolution Image processing with GAN and RL from unpaired image datasets." />
+<meta name="author" content="Abhishek" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Contents" />
+<meta property="og:description" content="Contents" />
+<meta property="og:site_name" content="Abhishek’s Blog" />
+<meta property="og:image" content="/mountains.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-08-27T00:00:00+05:30" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/mountains.jpg" />
+<meta property="twitter:title" content="Infinite Resolution Image processing with GAN and RL from unpaired image datasets." />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"/image-restoration","image":"/mountains.jpg","author":{"@type":"Person","name":"Abhishek"},"headline":"Infinite Resolution Image processing with GAN and RL from unpaired image datasets.","dateModified":"2019-08-27T00:00:00+05:30","datePublished":"2019-08-27T00:00:00+05:30","description":"Contents","mainEntityOfPage":{"@type":"WebPage","@id":"/image-restoration"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+  <body>
+    <div class="container">
+      <header class="header">
+  <h3 class="header-title">
+    <a href="/">Abhishek's Blog</a>
+    <small class="header-subtitle">All things AI and Beyond!</small>
+    <div class="menu">
+  <nav class="menu-content">
+    
+      <a href="/about.html">About</a>
+    
+      <a href="/writing.html">Writing</a>
+    
+      <a href="/contact.html">Contact</a>
+    
+  </nav>
+  <nav class="social-icons">
+    
+  
+  
+    <a href="https://github.com/Abhishek-Gawande" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="https://www.linkedin.com/in/abhishek-gawande-b4ba81128" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="mailto:abhishekgawande7452@gmail.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="/feed.xml"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+
+  </nav>
+</div>
+
+  </h3>
+</header>
+
+      <div class="content-container">
+        <h1>
+  Infinite Resolution Image processing with GAN and RL from unpaired image datasets.
+</h1>
+
+  <img src="/assets/img/mountains.jpg">
+
+<article>
+  <h1 id="contents">Contents</h1>
+
+<ol>
+  <li><a href="#objective">Objective</a></li>
+  <li><a href="#pre-processing">Pre-processing Data</a></li>
+  <li><a href="#model">Model</a></li>
+  <li><a href="#output">Output</a></li>
+  <li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="objective-">Objective :</h2>
+<p>We present in this project a deep learning approach that is trained on unpaired data, namely a set of photographs that exhibits a retouching style the user likes, which is much easier to collect. Our system is formulated using deep convolutional neural networks that learn to apply different retouching operations on an input image. Network training with respect to various types of edits is enabled by modeling these retouching operations in a unified manner as resolution-independent differentiable filters. To apply the filters in a proper sequence and with suitable parameters, we employ a deep reinforcement learning approach that learns to make decisions on what action to take next, given the current state of the image. In contrast to many deep learning systems, ours provides users with an understandable solution in the form of conventional retouching edits, rather than just a “black-box” result. Through quantitative comparisons and user studies, we show that this technique generates retouching results consistent with the provided photo set.</p>
+
+<h2 id="pre-processing">Pre-processing</h2>
+
+<p>We used the <a href="https://data.csail.mit.edu/graphics/fivek/">MIT-Adobe fiveK</a> dataset.</p>
+
+<ul>
+  <li>5,000 photos in DNG format</li>
+  <li>This format can be read by DCRAW, Adobe Lightroom, and many other tools. An Adobe Lightroom catalog with renditions by 5 experts</li>
+  <li>This includes values of individual sliders and the full history of adjustments for each photo.</li>
+  <li>Semantic information about each photo Indoor vs. outdoor, time of day, type of light, and main subject (people, nature, man-made objects, etc)</li>
+</ul>
+
+<p>Data augmentation and downsampling for image features is done as the original dataset is 50GB in size and requires Adobe lightroom to pre-process RAW files. The code can be found in <a href="https://github.com/Abhishek-Gawande/exposure/blob/master/fetch_fivek.py">fetch_fiveK.py</a></p>
+
+<h3 id="model">Model</h3>
+<p><img src="/assets/img/our-approach.png" alt="alt text" /></p>
+
+<p>Our differentiable model consists of image features. We define a parent filter class and each of our features will inherit these parent class.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">class</span> <span class="nc">Filter</span><span class="p">:</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">net</span><span class="p">,</span> <span class="n">cfg</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span> <span class="o">=</span> <span class="n">cfg</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">net</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]))</span>
+
+    <span class="c1"># Specified in child classes
+</span>    <span class="bp">self</span><span class="o">.</span><span class="n">num_filter_parameters</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">short_name</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">filter_parameters</span> <span class="o">=</span> <span class="bp">None</span>
+
+  <span class="k">def</span> <span class="nf">get_short_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">short_name</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">short_name</span>
+
+  <span class="k">def</span> <span class="nf">get_num_filter_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_filter_parameters</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_filter_parameters</span>
+
+  <span class="k">def</span> <span class="nf">extract_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+    <span class="n">output_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_num_filter_parameters</span><span class="p">(</span>
+    <span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_num_mask_parameters</span><span class="p">()</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">ly</span><span class="o">.</span><span class="n">fully_connected</span><span class="p">(</span>
+        <span class="n">features</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">fc1_size</span><span class="p">,</span>
+        <span class="n">scope</span><span class="o">=</span><span class="s">'fc1'</span><span class="p">,</span>
+        <span class="n">activation_fn</span><span class="o">=</span><span class="n">lrelu</span><span class="p">,</span>
+        <span class="n">weights_initializer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">xavier_initializer</span><span class="p">())</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">ly</span><span class="o">.</span><span class="n">fully_connected</span><span class="p">(</span>
+        <span class="n">features</span><span class="p">,</span>
+        <span class="n">output_dim</span><span class="p">,</span>
+        <span class="n">scope</span><span class="o">=</span><span class="s">'fc2'</span><span class="p">,</span>
+        <span class="n">activation_fn</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+        <span class="n">weights_initializer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">xavier_initializer</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">features</span><span class="p">[:,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">get_num_filter_parameters</span><span class="p">()],</span> \
+           <span class="n">features</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_num_filter_parameters</span><span class="p">():]</span>
+
+  <span class="c1"># Should be implemented in child classes
+</span>  <span class="k">def</span> <span class="nf">filter_param_regressor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="bp">False</span>
+
+  <span class="c1"># Process the whole image, without masking
+</span>  <span class="c1"># Should be implemented in child classes
+</span>  <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="bp">False</span>
+
+  <span class="k">def</span> <span class="nf">debug_info_batched</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">False</span>
+
+  <span class="k">def</span> <span class="nf">no_high_res</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">False</span>
+
+</code></pre></div></div>
+
+<h3 id="gan-architecture">GAN architecture</h3>
+
+<p><img src="/assets/img/gan_diagram.svg" alt="alt text" /></p>
+
+<p>Both the generator and the discriminator are neural networks. The generator output is connected directly to the discriminator input. Through backpropagation, the discriminator’s classification provides a signal that the generator uses to update its weights.</p>
+
+<p>We used <a href="https://arxiv.org/abs/1701.07875v3">WGAN</a> here.
+Also used Monte-carlo based Reinforcement Learning approach.</p>
+
+<p>the model picks a image operation, estimate the parameters from the Retouched images provided in the dataset.</p>
+
+<p><img src="/assets/img/image-op.png" alt="alt" /></p>
+
+<h4 id="output">Output:</h4>
+<p><img src="/assets/img/steps.gif" alt="alt text" /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This method provides following significant advantages over other peers:</p>
+
+<ul>
+  <li>Resolution independant features</li>
+  <li>Human understandable result</li>
+  <li>Unpaired training</li>
+</ul>
+
+<p>Limitations :</p>
+<ul>
+  <li>RL/GAN stability</li>
+  <li>Hyperparameter Tuning</li>
+  <li>poor performance on faces</li>
+</ul>
+
+<p>This Was My Final Year Project Done with <a href="https://jayeshjawade.github.io">Jayesh </a></p>
+
+<p>The code can be found <a href="https://github.com/Abhishek-Gawande/exposure">here.</a></p>
+
+</article>
+
+  <span class="post-date">
+  Written on
+  
+  August
+  27th,
+  2019
+  by
+  
+    Abhishek
+  
+</span>
+
+
+
+  <div class="post-date">Feel free to share!</div>
+<div class="sharing-icons">
+  <a href="https://twitter.com/intent/tweet?text=Infinite Resolution Image processing with GAN and RL from unpaired image datasets.&amp;url=/image-restoration" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=/image-restoration&amp;title=Infinite Resolution Image processing with GAN and RL from unpaired image datasets." target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+</div>
+
+
+
+  <div class="related">
+  <h1 >You may also Like:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+    
+      
+        
+        
+      
+    
+  </ul>
+</div>
+
+
+
+
+      </div>
+      <footer class="footer">
+  
+  
+  
+    <a href="https://github.com/Abhishek-Gawande" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="https://www.linkedin.com/in/abhishek-gawande-b4ba81128" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="mailto:abhishekgawande7452@gmail.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+  
+
+  
+  
+    <a href="/feed.xml"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+
+  <div class="footer-description"><a href="/">Abhishek's Blog | All things AI and Beyond! by Abhishek</a></div>
+</footer>
+
+    </div>
+  </body>
+</html>
