@@ -30,7 +30,7 @@ We used the [MIT-Adobe fiveK](https://data.csail.mit.edu/graphics/fivek/) datase
 Data augmentation and downsampling for image features is done as the original dataset is 50GB in size and requires Adobe lightroom to pre-process RAW files. The code can be found in [fetch_fiveK.py](https://github.com/Abhishek-Gawande/exposure/blob/master/fetch_fivek.py)
 
 ### Model
-![alt text](/assets/img/our-approach.png)
+![alt text](/blog/assets/img/our-approach.png)
 
 Our differentiable model consists of image features. We define a parent filter class and each of our features will inherit these parent class.
 
