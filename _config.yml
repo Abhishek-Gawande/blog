@@ -12,7 +12,7 @@
 
 # jekyll-paginate configuration
 paginate:            5
-baseurl: "/blog"
+baseurl: blog/
 # Build settings
 markdown:            kramdown
 highlighter:         rouge
