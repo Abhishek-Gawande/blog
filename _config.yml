@@ -12,7 +12,8 @@
 
 # jekyll-paginate configuration
 paginate:            5
-baseurl: blog/
+baseurl: https://abhishek-gawande.github.io/blog/
+
 # Build settings
 markdown:            kramdown
 highlighter:         rouge
