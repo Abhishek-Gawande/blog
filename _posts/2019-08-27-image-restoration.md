@@ -30,7 +30,7 @@ We used the [MIT-Adobe fiveK](https://data.csail.mit.edu/graphics/fivek/) datase
 Data augmentation and downsampling for image features is done as the original dataset is 50GB in size and requires Adobe lightroom to pre-process RAW files. The code can be found in [fetch_fiveK.py](https://github.com/Abhishek-Gawande/exposure/blob/master/fetch_fivek.py)
 
 ### Model
-![alt text](/assets/img/our-approach.png)
+![alt text](https://drive.google.com/uc?export=view&id=13y4NwrwOMJkF3dvsfrNz_eUj8c7t__IT)
 
 Our differentiable model consists of image features. We define a parent filter class and each of our features will inherit these parent class.
 
@@ -92,7 +92,7 @@ class Filter:
 
 ### GAN architecture
 
-![alt text](/assets/img/gan_diagram.svg)
+![alt text](https://drive.google.com/uc?export=view&id=1iKBEg4-NVaUKb05nmeZBnBWcYog9XubI)
 
 Both the generator and the discriminator are neural networks. The generator output is connected directly to the discriminator input. Through backpropagation, the discriminator's classification provides a signal that the generator uses to update its weights.
 
@@ -101,10 +101,10 @@ Also used Monte-carlo based Reinforcement Learning approach.
 
 the model picks a image operation, estimate the parameters from the Retouched images provided in the dataset.
 
-![alt](/assets/img/image-op.png)
+![alt](https://drive.google.com/uc?export=view&id=1elLew-4fTyBpNL8OhUHZlOMx-i--VdDY)
 
 #### Output:
-![alt text](/assets/img/steps.gif)
+![alt text](https://drive.google.com/uc?export=view&id=1SKxvt4Ms0b-TL2SMfWyGSNchy_iL6t3f)
 
 ## Conclusion
 
