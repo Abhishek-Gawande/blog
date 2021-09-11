@@ -125,7 +125,7 @@ implemented in NLTK library. BLEU stands for Bilingual Evaluation Understudy. It
 
 ## Conclusion 
 
-We also conclude that an LSTM is more suitable for caption generation than other vanilla recurrent neural networks(RCNN) because of its Long short term memory. Result varies greatly between images but can be improved by parameter
+We conclude that an LSTM is more suitable for caption generation than other vanilla recurrent neural networks(RCNN) because of its Long short term memory. Result varies greatly between images but can be improved by parameter
 tuning and using one of the recent evaluation metrics which can overcome BLEU score.
 
 ### Further Scope
