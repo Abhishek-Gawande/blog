@@ -44,7 +44,7 @@ To get Image features using pre-trained model is feasible.We'll use [resnet50](h
 
 ## Model
 #### Outline :
-![alt](/assets/img/Merge-For-Image-Captioning.png)
+![alt](https://drive.google.com/uc?export=view&id=1WmhME7QXQ6FAnu6Y_WwHknSYvdqJXYp-)
 
 ```
 ____________________________________________________________________________________________________
