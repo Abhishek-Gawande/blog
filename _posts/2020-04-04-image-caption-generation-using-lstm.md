@@ -44,7 +44,7 @@ To get Image features using pre-trained model is feasible.We'll use [resnet50](h
 
 ## Model
 #### Outline :
-![](/assets/img/Merge-For-Image-Captioning.png)
+![]({{site.baseurl}}/assets/img/Merge-For-Image-Captioning.png)
 
 ```
 ____________________________________________________________________________________________________
