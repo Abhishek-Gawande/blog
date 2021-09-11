@@ -119,9 +119,9 @@ def data_generator(train_descriptions,encoding_train,word_to_idx,max_len,batch_s
 We decided to use BLEU for evaluation because it is simple to use and its already
 implemented in NLTK library. BLEU stands for Bilingual Evaluation Understudy. It lies between [0,1]. Higher the score better the quality of caption.
 
-![alt](/assets/img/bleu.png)
+![alt](https://drive.google.com/uc?export=view&id=1C75tc4PA2kI8mQRQVSYktEHozxDWOPUW)
 
-![](/assets/img/lstm-op1.png)
+![](https://drive.google.com/uc?export=view&id=1UWXq6kdjVS_HRyHzMswHDRqXwJoJbHI0)
 
 ## Conclusion 
 
